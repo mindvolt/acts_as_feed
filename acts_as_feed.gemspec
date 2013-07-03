@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = ActsAsFeed::VERSION
   s.authors     = ["Chris McLeod"]
   s.email       = ["chris@mindvolt.com"]
-  s.homepage    = "mindvolt.com"
+  s.homepage    = "http://www.mindvolt.com"
   s.summary     = "Allows multiple models to be used as one collection"
   s.description = "Allows multiple models to be used as one collection"
 

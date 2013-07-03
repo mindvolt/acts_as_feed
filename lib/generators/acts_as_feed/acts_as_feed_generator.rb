@@ -7,6 +7,10 @@ class ActsAsFeedGenerator < Rails::Generators::Base
   argument :table_name, :required => false, :type => :string, :desc => "An alternate table name, default is feeds",
            :banner => "table_name"
 
+  def self.next_migration_number(path)
+    Time.now.utc.strftime("%Y%m%d%H%M%S")
+  end
+
   def self.source_root
     @source_root ||= File.expand_path('../templates', __FILE__)
   end

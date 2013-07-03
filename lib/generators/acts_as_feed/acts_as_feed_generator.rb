@@ -1,6 +1,7 @@
 require 'rails/generators/active_record'
 
 class ActsAsFeedGenerator < Rails::Generators::Base
+  include Rails::Generators::Migration
   desc "Create a migration to add a database table for the ActsAsFeed::Feed model"
 
   argument :table_name, :required => false, :type => :string, :desc => "An alternate table name, default is feeds",

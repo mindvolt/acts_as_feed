@@ -32,7 +32,7 @@ module ActsAsFeed
   	end
   end
 
-  def Feed < ActiveRecord::Base
+  class Feed < ActiveRecord::Base
 
   	attr_accessible :updated_at,
   		:created_at,

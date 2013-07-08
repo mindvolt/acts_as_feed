@@ -13,6 +13,7 @@ module ActsAsFeed
 			self.acts_as_feed_sync = options[:sync] || false
 			self.acts_as_feed_on = options[:on] || :updated_at
 			has_one :feed, :as => :feedable, :class_name => 'ActsAsFeed::Feed'
+      attr_accessible :feedable, :feedable_type, :feedable_id
 			validates acts_as_feed_on, :presence => true
 			after_save :ensure_feedable
       send(:include, InstanceMethods)

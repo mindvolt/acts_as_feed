@@ -40,6 +40,8 @@ module ActsAsFeed
   		:feedable_type,
   		:feedable_id
 
+    belongs_to :feedable, :polymorphic => true
+
   end
 
 end

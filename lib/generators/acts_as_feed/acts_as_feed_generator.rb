@@ -5,7 +5,7 @@ class ActsAsFeedGenerator < Rails::Generators::Base
   desc "Create a migration to add a database table for the ActsAsFeed::Feed model"
 
   argument :table_name, :required => false, :type => :string, :desc => "An alternate table name, default is feeds",
-           :banner => "table_name"
+           :banner => "table_name", :default => 'feeds'
 
   def self.next_migration_number(path)
     Time.now.utc.strftime("%Y%m%d%H%M%S")

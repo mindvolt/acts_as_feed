@@ -13,7 +13,7 @@ module ActsAsFeed
 			self.acts_as_feed_sync = options[:sync] || false
 			self.acts_as_feed_on = options[:on] || :updated_at
 			has_one :feed, :as => :feedable, :class_name => 'ActsAsFeed::Feed'
-			validates self.acts_as_feed_on, :presence => true
+			validates acts_as_feed_on, :presence => true
 			after_save :ensure_feedable
       send(:include, InstanceMethods)
     end
@@ -22,7 +22,7 @@ module ActsAsFeed
 
   module InstanceMethods
   	def ensure_feedable
-  		if self.class.acts_as_feed_sync === true || self.new_record?
+  		if self.class.acts_as_feed_sync === true || self.id_changed?
   			self.feed.delete if self.feed
   			ActsAsFeed::Feed.create({
   				:updated_at => self.send(self.class.acts_as_feed_on),

@@ -1,5 +1,7 @@
 module ActsAsFeed
 
+  require 'railtie' if defined?(Rails)
+
 	def self.included(base)
 		base.send(:extend, ClassMethods)
 	end

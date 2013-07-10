@@ -1,3 +1,3 @@
 module ActsAsFeed
-  VERSION = "0.0.1" unless defined? ActsAsFeed::VERSION
+  VERSION = "0.0.2" unless defined? ActsAsFeed::VERSION
 end

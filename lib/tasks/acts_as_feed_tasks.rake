@@ -5,6 +5,6 @@
 namespace :acts_as_feed do
 	desc "(Re)build feed items"
 	task :rebuild => :environment do
-	  ActsAsFeed.rebuild!
+	  ActsAsFeed.rebuild_feeds!
 	end
 end

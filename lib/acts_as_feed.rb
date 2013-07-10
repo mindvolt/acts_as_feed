@@ -6,6 +6,23 @@ module ActsAsFeed
 		base.send(:extend, ClassMethods)
 	end
 
+  def self.rebuild_feeds!
+    @classes.each do |klass|
+      klass.all.each do |instance|
+        instance.acts_as_feed_rebuild!
+      end
+    end
+  end
+
+  def self.add_feed_class klass
+    @classes ||= []
+    @classes << klass
+  end
+
+  def self.classes
+    @classes
+  end
+
 	module ClassMethods
 
 		attr_accessor :acts_as_feed_sync
@@ -18,29 +35,27 @@ module ActsAsFeed
 			validates acts_as_feed_on, :presence => true
 			after_save :ensure_feedable
       send(:include, InstanceMethods)
+      ActsAsFeed.add_feed_class(self)
     end
 
   end
 
   module InstanceMethods
 
-    def acts_as_feed?
-      true
-    end
-
   	def ensure_feedable
   		if self.class.acts_as_feed_sync === true || self.id_changed?
-  			self.acts_as_feed_rebuild
+  			self.acts_as_feed_rebuild!
   		end
   	end
 
-    def acts_as_feed_rebuild
+    def acts_as_feed_rebuild!
       self.feed.delete if self.feed
       ActsAsFeed::Feed.create({
         :updated_at => self.send(self.class.acts_as_feed_on),
         :feedable => self
       })
     end
+
   end
 
   class Feed < ActiveRecord::Base

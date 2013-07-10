@@ -12,6 +12,8 @@ rescue LoadError
   RDoc::Task = Rake::RDocTask
 end
 
+require 'rails/dummy/tasks'
+
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'ActsAsFeed'

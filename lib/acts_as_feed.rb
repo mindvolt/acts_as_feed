@@ -21,15 +21,24 @@ module ActsAsFeed
   end
 
   module InstanceMethods
+
+    def acts_as_feed?
+      true
+    end
+
   	def ensure_feedable
   		if self.class.acts_as_feed_sync === true || self.id_changed?
-  			self.feed.delete if self.feed
-  			ActsAsFeed::Feed.create({
-  				:updated_at => self.send(self.class.acts_as_feed_on),
-  				:feedable => self
-  			})
+  			self.acts_as_feed_rebuild
   		end
   	end
+
+    def acts_as_feed_rebuild
+      self.feed.delete if self.feed
+      ActsAsFeed::Feed.create({
+        :updated_at => self.send(self.class.acts_as_feed_on),
+        :feedable => self
+      })
+    end
   end
 
   class Feed < ActiveRecord::Base

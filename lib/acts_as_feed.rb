@@ -14,9 +14,11 @@ module ActsAsFeed
     end
   end
 
-  def self.add_feed_class klass
+  def self.models= models
     @classes ||= []
-    @classes << klass
+    models.each do |model|
+      @classes << model.camelize.constantize
+    end
   end
 
   def self.classes
@@ -35,7 +37,6 @@ module ActsAsFeed
 			validates acts_as_feed_on, :presence => true
 			after_save :ensure_feedable
       send(:include, InstanceMethods)
-      ActsAsFeed.add_feed_class(self)
     end
 
   end

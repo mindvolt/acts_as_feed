@@ -2,6 +2,7 @@ require 'rails/generators/active_record'
 
 class ActsAsFeedGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
+
   desc "Create a migration to add a database table for the ActsAsFeed::Feed model"
 
   argument :table_name, :required => false, :type => :string, :desc => "An alternate table name, default is feeds",
@@ -13,6 +14,10 @@ class ActsAsFeedGenerator < Rails::Generators::Base
 
   def self.source_root
     @source_root ||= File.expand_path('../templates', __FILE__)
+  end
+
+  def copy_initializer
+    template "acts_as_feed.rb.erb", "config/initializers/acts_as_feed.rb"
   end
 
   def generate_migration

@@ -31,7 +31,7 @@ module ActsAsFeed
 		attr_accessor :acts_as_feed_on
 
 		def acts_as_feed(options={})
-			self.acts_as_feed_sync = options[:sync] || false
+			self.acts_as_feed_sync = options[:sync] || true
 			self.acts_as_feed_on = options[:on] || :updated_at
 			has_one :feed, :as => :feedable, :class_name => 'ActsAsFeed::Feed'
 			validates acts_as_feed_on, :presence => true

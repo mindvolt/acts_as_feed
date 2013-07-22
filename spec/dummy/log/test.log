@@ -490,3 +490,45 @@ Connecting to database specified by database.yml
   [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
   [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (25.9ms)[0m  [1mINSERT INTO "fruits" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["name", "Apple"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "feeds" WHERE "feeds"."feedable_id" = 1 AND "feeds"."feedable_type" = 'Fruit'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "feeds" ("created_at", "feedable_id", "feedable_type", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["feedable_id", 1], ["feedable_type", "Fruit"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "feeds"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "feeds" 
+  [1m[36mFruit Load (0.1ms)[0m  [1mSELECT "fruits".* FROM "fruits" [0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "feeds" WHERE "feeds"."feedable_id" = 1 AND "feeds"."feedable_type" = 'Fruit'
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "feeds" ("created_at", "feedable_id", "feedable_type", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["feedable_id", 1], ["feedable_type", "Fruit"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "feeds" 
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fruits" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["name", "Apple"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "feeds" WHERE "feeds"."feedable_id" = 1 AND "feeds"."feedable_type" = 'Fruit'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "feeds" ("created_at", "feedable_id", "feedable_type", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["feedable_id", 1], ["feedable_type", "Fruit"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "feeds"
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "feeds" [0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mUPDATE "fruits" SET "updated_at" = '2013-07-22 21:39:52.738601' WHERE "fruits"."id" = 1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "feeds" WHERE "feeds"."feedable_id" = 1 AND "feeds"."feedable_type" = 'Fruit'
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "feeds" ("created_at", "feedable_id", "feedable_type", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["feedable_id", 1], ["feedable_type", "Fruit"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "feeds" [0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "feeds" 
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  UPDATE "fruits" SET "updated_at" = '2013-07-22 21:39:52.741933' WHERE "fruits"."id" = 1
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "feeds" WHERE "feeds"."feedable_id" = 1 AND "feeds"."feedable_type" = 'Fruit'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "feeds" ("created_at", "feedable_id", "feedable_type", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00], ["feedable_id", 1], ["feedable_type", "Fruit"], ["updated_at", Mon, 22 Jul 2013 21:39:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "feeds" 
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m

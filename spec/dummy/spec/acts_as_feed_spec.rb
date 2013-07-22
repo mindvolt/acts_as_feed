@@ -13,4 +13,13 @@ describe ActsAsFeed do
 		}.to change(ActsAsFeed::Feed, :count).by(1)
 	end
 
+	it 'should not create duplicates' do
+		expect {
+			@fruit.update_attributes({:updated_at => Time.now})
+		}.to change(ActsAsFeed::Feed, :count).by(1)
+		expect {
+			@fruit.update_attributes({:updated_at => Time.now})
+		}.not_to change(ActsAsFeed::Feed, :count)
+	end
+
 end

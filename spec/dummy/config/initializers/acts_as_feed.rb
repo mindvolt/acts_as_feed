@@ -1,0 +1,1 @@
+ActsAsFeed.models = ['fruit']

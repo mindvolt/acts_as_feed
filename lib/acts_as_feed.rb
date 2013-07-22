@@ -50,7 +50,8 @@ module ActsAsFeed
   	end
 
     def acts_as_feed_rebuild!
-      self.feed.delete if self.feed
+      feed = ActsAsFeed::Feed.where(:feedable_id => self.id, :feedable_type => self.class.to_s).first
+      feed.delete unless feed.nil?
       ActsAsFeed::Feed.create({
         :updated_at => self.send(self.class.acts_as_feed_on),
         :feedable => self

@@ -44,7 +44,8 @@ module ActsAsFeed
   module InstanceMethods
 
   	def ensure_feedable
-  		if self.class.acts_as_feed_sync === true || self.id_changed?
+      create_feedable = ((defined? self.create_feedable?) ? self.create_feedable? : true)
+  		if (self.class.acts_as_feed_sync === true || self.id_changed?) && create_feedable === true
   			self.acts_as_feed_rebuild!
   		end
   	end

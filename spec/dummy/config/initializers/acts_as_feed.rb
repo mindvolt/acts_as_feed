@@ -1,1 +1,1 @@
-ActsAsFeed.models = ['fruit']
+ActsAsFeed.models = ['fruit', 'vegetable']
